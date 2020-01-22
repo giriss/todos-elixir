@@ -15,11 +15,11 @@ function TodoAdder({ disabled, onAdd }) {
       }}
     >
       <Input
-        size="huge"
         ref={input}
-        action={{ icon: 'add' }}
+        action={{ icon: 'add', content: 'Add' }}
         placeholder="New todo"
         disabled={disabled}
+        fluid
       />
     </form>
   );

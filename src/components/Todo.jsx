@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Menu } from 'semantic-ui-react';
+import { List, Icon } from 'semantic-ui-react';
 
 function Todo({ title, completed, onEdit }) {
   let textStyle;
@@ -11,7 +11,8 @@ function Todo({ title, completed, onEdit }) {
   }
 
   return (
-    <Menu.Item
+    <List.Item
+      as="a"
       onClick={() => { onEdit({ completed: !completed }); }}
       onKeyPress={(event) => {
         if (event.key === 'Enter') {
@@ -19,8 +20,11 @@ function Todo({ title, completed, onEdit }) {
         }
       }}
     >
-      <span style={textStyle}>{title}</span>
-    </Menu.Item>
+      <Icon name={`check circle${completed ? '' : ' outline'}`} />
+      <List.Content>
+        <List.Header style={textStyle}>{title}</List.Header>
+      </List.Content>
+    </List.Item>
   );
 }
 

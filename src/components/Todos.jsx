@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import nprogress from 'nprogress';
+import { Container, Header, Icon } from 'semantic-ui-react';
 import * as Todo from '../services/todo';
 import AllTodoList from '../containers/AllTodoList';
 import SavedTodoAdder from '../containers/SavedTodoAdder';
 import './Todos.sass';
-import { Container } from 'semantic-ui-react';
 
 function Todos({ amount, loading, onFetch }) {
   useEffect(() => {
@@ -30,11 +30,17 @@ function Todos({ amount, loading, onFetch }) {
 
   return (
     <Container>
-      <h1>
-        {`${amount} `}
-        Todo
-        {amount > 1 ? 's' : ''}
-      </h1>
+      <Header as="h1" dividing>
+        <Icon name="list alternate outline" />
+        <Header.Content>
+          Todo App
+          <Header.Subheader>
+            {`${amount} `}
+            Todo
+            {amount > 1 ? 's' : ''}
+          </Header.Subheader>
+        </Header.Content>
+      </Header>
       <AllTodoList />
       <SavedTodoAdder />
     </Container>
