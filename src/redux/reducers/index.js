@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
 import todos from './todos';
+import loading from './loading';
 
-export default combineReducers({ todos });
+export default combineReducers({ todos, loading });

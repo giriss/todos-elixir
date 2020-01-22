@@ -3,9 +3,12 @@ import PropTypes from 'prop-types';
 import * as Todo from '../services/todo';
 import AllTodoList from '../containers/AllTodoList';
 import SavedTodoAdder from '../containers/SavedTodoAdder';
+import spinner from '../spinner.svg';
 
-function Todos({ amount, onFetch }) {
+function Todos({ amount, loading, onFetch }) {
   useEffect(() => {
+    if (loading) return;
+
     Todo.all().then((todos) => {
       const items = todos.map(({ id, title, completed }) => ({
         id, title, completed,
@@ -13,6 +16,10 @@ function Todos({ amount, onFetch }) {
       onFetch(items);
     });
   });
+
+  if (loading) {
+    return <img src={spinner} alt="loading" height="100" />;
+  }
 
   return (
     <>
@@ -29,10 +36,12 @@ function Todos({ amount, onFetch }) {
 
 Todos.propTypes = {
   amount: PropTypes.number.isRequired,
+  loading: PropTypes.bool,
   onFetch: PropTypes.func,
 };
 
 Todos.defaultProps = {
+  loading: false,
   onFetch() {},
 };
 
