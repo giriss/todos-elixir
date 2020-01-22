@@ -1,11 +1,12 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Menu } from 'semantic-ui-react';
 import Todo from './Todo';
 
 function TodoList({ todos, onEdit }) {
   return (
-    <ul>
+    <Menu vertical size="huge">
       {todos.map(({ id, title, completed }) => (
         <Todo
           {...{ title, completed }}
@@ -13,7 +14,7 @@ function TodoList({ todos, onEdit }) {
           onEdit={(changes) => { onEdit(id, changes); }}
         />
       ))}
-    </ul>
+    </Menu>
   );
 }
 

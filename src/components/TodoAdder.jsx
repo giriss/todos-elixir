@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
+import { Input } from 'semantic-ui-react';
 
 function TodoAdder({ disabled, onAdd }) {
   const input = useRef();
@@ -9,12 +10,17 @@ function TodoAdder({ disabled, onAdd }) {
       onSubmit={(event) => {
         event.stopPropagation();
         event.preventDefault();
-        onAdd(input.current.value);
-        input.current.value = '';
+        onAdd(input.current.inputRef.current.value);
+        input.current.inputRef.current.value = '';
       }}
     >
-      <input disabled={disabled} ref={input} placeholder="New todo" />
-      <button disabled={disabled} type="submit">Add</button>
+      <Input
+        size="huge"
+        ref={input}
+        action={{ icon: 'add' }}
+        placeholder="New todo"
+        disabled={disabled}
+      />
     </form>
   );
 }

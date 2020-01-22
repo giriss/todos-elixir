@@ -5,6 +5,7 @@ import * as Todo from '../services/todo';
 import AllTodoList from '../containers/AllTodoList';
 import SavedTodoAdder from '../containers/SavedTodoAdder';
 import './Todos.sass';
+import { Container } from 'semantic-ui-react';
 
 function Todos({ amount, loading, onFetch }) {
   useEffect(() => {
@@ -28,7 +29,7 @@ function Todos({ amount, loading, onFetch }) {
   }
 
   return (
-    <>
+    <Container>
       <h1>
         {`${amount} `}
         Todo
@@ -36,7 +37,7 @@ function Todos({ amount, loading, onFetch }) {
       </h1>
       <AllTodoList />
       <SavedTodoAdder />
-    </>
+    </Container>
   );
 }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Menu } from 'semantic-ui-react';
 
 function Todo({ title, completed, onEdit }) {
   let textStyle;
@@ -10,20 +11,16 @@ function Todo({ title, completed, onEdit }) {
   }
 
   return (
-    <li style={textStyle}>
-      <span
-        onClick={() => { onEdit({ completed: !completed }); }}
-        onKeyPress={(event) => {
-          if (event.key === 'Enter') {
-            onEdit({ completed: !completed });
-          }
-        }}
-        role="button"
-        tabIndex="0"
-      >
-        {title}
-      </span>
-    </li>
+    <Menu.Item
+      onClick={() => { onEdit({ completed: !completed }); }}
+      onKeyPress={(event) => {
+        if (event.key === 'Enter') {
+          onEdit({ completed: !completed });
+        }
+      }}
+    >
+      <span style={textStyle}>{title}</span>
+    </Menu.Item>
   );
 }
 
