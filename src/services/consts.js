@@ -1,2 +1,2 @@
-export const PROTOCOL = 'http://';
-export const API_ENDPOINT = `${PROTOCOL}localhost:3000`;
+export const PROTOCOL = 'https://';
+export const API_ENDPOINT = `${PROTOCOL}secure-ocean-46791.herokuapp.com`;
