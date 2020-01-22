@@ -4,6 +4,7 @@ import * as Todo from '../services/todo';
 import AllTodoList from '../containers/AllTodoList';
 import SavedTodoAdder from '../containers/SavedTodoAdder';
 import spinner from '../spinner.svg';
+import './Todos.sass';
 
 function Todos({ amount, loading, onFetch }) {
   useEffect(() => {
