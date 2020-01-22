@@ -1,7 +1,7 @@
-import { ADD_TODO, EDIT_TODO } from '../actions';
+import { ADD_TODO, EDIT_TODO, ADD_TODOS } from '../actions';
 
 export default function todos(state = [], {
-  id, type, title, changes,
+  id, type, title, changes, items,
 }) {
   switch (type) {
     case ADD_TODO:
@@ -12,6 +12,8 @@ export default function todos(state = [], {
       todoList[index] = { ...state[index], ...changes };
       return todoList;
     }
+    case ADD_TODOS:
+      return [...items];
     default:
       return [...state];
   }

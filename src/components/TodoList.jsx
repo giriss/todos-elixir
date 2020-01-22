@@ -19,7 +19,7 @@ function TodoList({ todos, onEdit }) {
 
 TodoList.propTypes = {
   todos: PropTypes.arrayOf(PropTypes.exact({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     completed: PropTypes.bool,
   })).isRequired,
