@@ -13,6 +13,7 @@ function Todos({ amount, loading, onFetch }) {
       const items = todos.map(({ id, title, completed }) => ({
         id, title, completed,
       }));
+      items.sort(({ id: id1 }, { id: id2 }) => (id1 > id2 ? 1 : -1));
       onFetch(items);
     });
   });
