@@ -9,7 +9,7 @@ import { setLoading } from '../redux/actions/loading';
 
 function* apiAddTodo({ title }) {
   yield put(setLoading(true));
-  const { id, _title } = yield call(Todo.create, { todo: { title } });
+  const { id, title: _title } = yield call(Todo.create, { todo: { title } });
   yield put(addTodo(_title, id));
   yield put(setLoading(false));
 }

@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 
-function TodoAdder({ onAdd }) {
+function TodoAdder({ disabled, onAdd }) {
   const input = useRef();
 
   return (
@@ -13,17 +13,19 @@ function TodoAdder({ onAdd }) {
         input.current.value = '';
       }}
     >
-      <input ref={input} placeholder="New todo" />
-      <button type="submit">Add</button>
+      <input disabled={disabled} ref={input} placeholder="New todo" />
+      <button disabled={disabled} type="submit">Add</button>
     </form>
   );
 }
 
 TodoAdder.propTypes = {
+  disabled: PropTypes.bool,
   onAdd: PropTypes.func,
 };
 
 TodoAdder.defaultProps = {
+  disabled: false,
   onAdd() {},
 };
 

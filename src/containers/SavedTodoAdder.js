@@ -8,4 +8,4 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default connect(null, mapDispatchToProps)(TodoAdder);
+export default connect(({ loading: disabled }) => ({ disabled }), mapDispatchToProps)(TodoAdder);
