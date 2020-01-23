@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { List } from 'semantic-ui-react';
 import Todo from './Todo';
 
-function TodoList({ todos, onEdit }) {
+function TodoList({ todos, onEdit, onDelete }) {
   return (
     <List relaxed="very" divided>
       {todos.map(({ id, title, completed }) => (
@@ -12,6 +12,7 @@ function TodoList({ todos, onEdit }) {
           {...{ title, completed }}
           key={id}
           onEdit={(changes) => { onEdit(id, changes); }}
+          onDelete={() => { onDelete(id); }}
         />
       ))}
     </List>
@@ -25,10 +26,12 @@ TodoList.propTypes = {
     completed: PropTypes.bool,
   })).isRequired,
   onEdit: PropTypes.func,
+  onDelete: PropTypes.func,
 };
 
 TodoList.defaultProps = {
   onEdit() {},
+  onDelete() {},
 };
 
 export default TodoList;

@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { List, Icon } from 'semantic-ui-react';
+import { List, Icon, Label } from 'semantic-ui-react';
 
-function Todo({ title, completed, onEdit }) {
+function Todo({
+  title, completed, onEdit, onDelete,
+}) {
   let textStyle;
   if (completed) {
     textStyle = { textDecoration: 'line-through' };
@@ -20,6 +22,18 @@ function Todo({ title, completed, onEdit }) {
         }
       }}
     >
+      <List.Content floated="right">
+        <Label
+          color="red"
+          onClick={(e) => {
+            e.stopPropagation();
+            onDelete();
+          }}
+          horizontal
+        >
+          Delete
+        </Label>
+      </List.Content>
       <Icon name={`check circle${completed ? '' : ' outline'}`} />
       <List.Content>
         <List.Header style={textStyle}>{title}</List.Header>
@@ -32,10 +46,12 @@ Todo.propTypes = {
   title: PropTypes.string.isRequired,
   completed: PropTypes.bool,
   onEdit: PropTypes.func,
+  onDelete: PropTypes.func,
 };
 
 Todo.defaultProps = {
   onEdit() {},
+  onDelete() {},
   completed: false,
 };
 

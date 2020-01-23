@@ -3,7 +3,7 @@ import {
 } from 'redux-saga/effects';
 import * as Todo from '../services/todo';
 import {
-  addTodo, EDIT_TODO_ASYNC, ADD_TODO_ASYNC, editTodo,
+  addTodo, EDIT_TODO_ASYNC, ADD_TODO_ASYNC, editTodo, DELETE_TODO_ASYNC, deleteTodo,
 } from '../redux/actions';
 import { setLoading } from '../redux/actions/loading';
 
@@ -21,6 +21,13 @@ function* apiEditTodo({ id, changes }) {
   yield put(setLoading(false));
 }
 
+function* apiDeleteTodo({ payload }) {
+  yield put(setLoading(true));
+  yield call(Todo.remove, payload);
+  yield put(deleteTodo(payload));
+  yield put(setLoading(false));
+}
+
 function* watchApiAddTodo() {
   yield takeEvery(ADD_TODO_ASYNC, apiAddTodo);
 }
@@ -29,9 +36,14 @@ function* watchApiEditTodo() {
   yield takeEvery(EDIT_TODO_ASYNC, apiEditTodo);
 }
 
+function* watchApiDeleteTodo() {
+  yield takeEvery(DELETE_TODO_ASYNC, apiDeleteTodo);
+}
+
 export default function* rootSaga() {
   yield all([
     watchApiAddTodo(),
     watchApiEditTodo(),
+    watchApiDeleteTodo(),
   ]);
 }

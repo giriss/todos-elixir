@@ -12,3 +12,7 @@ export async function create(todo) {
 export async function update(id, changes) {
   return (await Axios.patch(`${API_ENDPOINT}/todos/${id}`, changes)).data;
 }
+
+export async function remove(id) {
+  return (await Axios.delete(`${API_ENDPOINT}/todos/${id}`)).data;
+}
