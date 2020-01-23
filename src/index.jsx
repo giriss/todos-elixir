@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import { Container } from 'semantic-ui-react';
 import createSagaMiddleware from 'redux-saga';
 import * as serviceWorker from './serviceWorker';
 import todoReducer from './redux/reducers';
@@ -13,7 +14,11 @@ const store = createStore(todoReducer, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(rootSaga);
 
 render(
-  <Provider store={store}><AllTodos /></Provider>,
+  <Provider store={store}>
+    <Container style={{ paddingTop: '20px' }}>
+      <AllTodos />
+    </Container>
+  </Provider>,
   document.getElementById('root'),
 );
 
