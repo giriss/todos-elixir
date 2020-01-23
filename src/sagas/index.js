@@ -7,14 +7,14 @@ import {
 } from '../redux/actions';
 import { setLoading } from '../redux/actions/loading';
 
-function* apiAddTodo({ title }) {
+function* apiAddTodo({ payload: title }) {
   yield put(setLoading(true));
   const { id, title: _title } = yield call(Todo.create, { todo: { title } });
   yield put(addTodo(_title, id));
   yield put(setLoading(false));
 }
 
-function* apiEditTodo({ id, changes }) {
+function* apiEditTodo({ payload: { id, changes } }) {
   yield put(setLoading(true));
   const { id: _id } = yield call(Todo.update, id, changes);
   yield put(editTodo(_id, changes));
