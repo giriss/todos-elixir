@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { List, Icon, Label } from 'semantic-ui-react';
+import { List, Icon } from 'semantic-ui-react';
 
 function Todo({
   title, completed, onEdit, onDelete,
@@ -23,16 +23,13 @@ function Todo({
       }}
     >
       <List.Content floated="right">
-        <Label
-          color="red"
+        <Icon
+          name="close"
           onClick={(e) => {
             e.stopPropagation();
             onDelete();
           }}
-          horizontal
-        >
-          Delete
-        </Label>
+        />
       </List.Content>
       <Icon name={`check circle${completed ? '' : ' outline'}`} />
       <List.Content>

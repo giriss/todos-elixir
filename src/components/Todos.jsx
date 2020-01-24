@@ -31,7 +31,7 @@ function Todos({ amount, loading, onFetch }) {
   });
 
   return (
-    <Segment raised>
+    <Segment>
       {!fetched && <TodosPlaceholder />}
       {fetched && (
         <>
