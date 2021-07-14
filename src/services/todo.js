@@ -10,7 +10,7 @@ export async function create(todo) {
 }
 
 export async function update(id, changes) {
-  return (await Axios.patch(`${API_ENDPOINT}/todos/${id}`, changes)).data.data;
+  return (await Axios.patch(`${API_ENDPOINT}/todos/${id}`, { todo: changes })).data.data;
 }
 
 export async function remove(id) {
