@@ -6,11 +6,11 @@ export async function all() {
 }
 
 export async function create(todo) {
-  return (await Axios.post(`${API_ENDPOINT}/todos`, { todo })).data.data;
+  return (await Axios.post(`${API_ENDPOINT}/todos`, todo)).data.data;
 }
 
 export async function update(id, changes) {
-  return (await Axios.patch(`${API_ENDPOINT}/todos/${id}`, { todo: changes })).data.data;
+  return (await Axios.patch(`${API_ENDPOINT}/todos/${id}`, changes)).data.data;
 }
 
 export async function remove(id) {
